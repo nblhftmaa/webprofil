@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portofolio - Nabilah Fatmawati</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --bg-dark: #0f172a;       /* Slate Gelap Premium */
+            --primary: #4f46e5;       /* Indigo Accent */
+            --accent: #06b6d4;        /* Cyan Accent */
+            --text-dark: #1e293b;     /* Slate Tua */
+            --text-muted: #64748b;    /* Slate Abu */
+            --bg-light: #f8fafc;      /* Background Terang */
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: var(--text-dark);
+            background-color: #ffffff;
+            scroll-behavior: smooth;
+        }
+
+        /* Navbar */
+        .navbar {
+            background-color: rgba(15, 23, 42, 0.95) !important;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+
+        /* Hero Section */
+        .hero-section {
+            background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 50%, #312e81 100%);
+            color: #ffffff;
+            padding: 120px 0 90px;
+        }
+
+        .hero-title {
+            color: #ffffff;
+            font-weight: 800;
+        }
+
+        .hero-subtitle {
+            color: #cbd5e1;
+            font-size: 1.1rem;
+            line-height: 1.7;
+        }
+
+        .profile-img {
+            width: 230px;
+            height: 230px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 4px solid #6366f1;
+            box-shadow: 0 0 30px rgba(99, 102, 241, 0.35);
+        }
+
+        /* Buttons */
+        .btn-primary-custom {
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            font-weight: 600;
+            padding: 12px 28px;
+            border-radius: 30px;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-primary-custom:hover {
+            background-color: #4338ca;
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(79, 70, 229, 0.4);
+        }
+
+        .btn-outline-custom {
+            border: 2px solid #6366f1;
+            color: #ffffff;
+            font-weight: 600;
+            padding: 10px 26px;
+            border-radius: 30px;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-outline-custom:hover {
+            background-color: rgba(99, 102, 241, 0.15);
+            color: #ffffff;
+            transform: translateY(-2px);
+        }
+
+        /* Section Headings */
+        .section-title {
+            color: var(--text-dark);
+            font-weight: 700;
+        }
+
+        .section-desc {
+            color: var(--text-muted);
+            font-size: 1rem;
+        }
+
+        /* Info Card (Pendidikan & Soft Skills) */
+        .info-card {
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 16px;
+            padding: 24px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.04);
+            height: 100%;
+        }
+
+        .info-icon-box {
+            width: 48px;
+            height: 48px;
+            background-color: #e0e7ff;
+            color: var(--primary);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.25rem;
+            margin-bottom: 16px;
+        }
+
+        .soft-skill-badge {
+            background-color: #f1f5f9;
+            color: var(--text-dark);
+            border: 1px solid #cbd5e1;
+            padding: 8px 16px;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            display: inline-block;
+            margin: 4px;
+        }
+
+        /* Progress Bars (Skills) */
+        .progress {
+            height: 12px;
+            border-radius: 10px;
+            background-color: #e2e8f0;
+            overflow: hidden;
+        }
+
+        .progress-bar {
+            background: linear-gradient(90deg, #4f46e5, #06b6d4);
+            border-radius: 10px;
+        }
+
+        .skill-name {
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+
+        .skill-percent {
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        /* Cards Proyek & Sertifikat */
+        .card-custom {
+            border: 1px solid #e2e8f0;
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            overflow: hidden;
+            background: #ffffff;
+        }
+
+        .card-custom:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.12);
+        }
+
+        .cert-img-container {
+            width: 100%;
+            height: 280px;
+            background-color: #f1f5f9;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 12px;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .cert-img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+            border-radius: 8px;
+        }
+
+        .cert-badge {
+            background-color: #e0e7ff;
+            color: var(--primary);
+            font-weight: 600;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+        }
+
+        /* Contact Box */
+        .contact-card {
+            border: 1px solid #e2e8f0;
+            border-radius: 16px;
+            padding: 30px;
+            background: #ffffff;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease;
+        }
+
+        .contact-card:hover {
+            transform: translateY(-4px);
+        }
+
+        .contact-icon {
+            width: 60px;
+            height: 60px;
+            background-color: #e0e7ff;
+            color: var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin: 0 auto 15px;
+        }
+
+        footer {
+            background-color: var(--bg-dark);
+            color: #94a3b8;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand fw-bold text-white" href="#">Nabilah Fatmawati</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link text-white-50" href="#about">Tentang</a></li>
+                    <li class="nav-item"><a class="nav-link text-white-50" href="#skills">Keahlian</a></li>
+                    <li class="nav-item"><a class="nav-link text-white-50" href="#projects">Pengalaman Proyek</a></li>
+                    <li class="nav-item"><a class="nav-link text-white-50" href="#certificates">Sertifikat</a></li>
+                    <li class="nav-item"><a class="nav-link text-white-50" href="#contact">Kontak</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero / About Section -->
+    <section id="about" class="hero-section text-center text-md-start">
+        <div class="container">
+            <div class="row align-items-center flex-column-reverse flex-md-row">
+                <div class="col-md-8 mt-4 mt-md-0">
+                    <h1 class="display-4 hero-title">Halo, Saya Nabilah Fatmawati</h1>
+                    <p class="hero-subtitle mt-3">
+                        Saya adalah seorang siswi <strong>RPL (Rekayasa Perangkat Lunak) di SMKN 8 Jember</strong> yang sedang fokus untuk beralih ke peran <strong>Full-Stack Developer</strong>. Saya memiliki keahlian dalam Front-End (HTML, CSS, JavaScript) dan UI/UX.
+                    </p><br>
+                    <p>Saya sangat antusias untuk berkontribusi dalam tim selama magang dan terus mengembangkan skill dalam pengembangan web modern. Portfolio ini menampilkan beberapa projek yang telah saya kembangkan dengan fokus pada user experience dan desain yang responsif.</p>
+                    <div class="mt-4">
+                        <a href="#projects" class="btn-primary-custom me-2 mb-2 mb-sm-0">
+                            <i class="fas fa-code me-1"></i> Lihat Proyek
+                        </a>
+                        <a href="#certificates" class="btn-outline-custom mb-2 mb-sm-0">
+                            <i class="fas fa-certificate me-1"></i> Sertifikat Saya
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-4 text-center">
+                    <img src="nabilah.jpg" alt="Foto Nabilah Fatmawati" class="profile-img">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Pendidikan & Soft Skills -->
+    <section class="py-5" style="background-color: var(--bg-light);">
+        <div class="container">
+            <div class="row g-4">
+                
+                <!-- Pendidikan -->
+                <div class="col-md-6">
+                    <div class="info-card">
+                        <div class="info-icon-box">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                        <h4 class="fw-bold mb-3">Pendidikan</h4>
+                        <div class="border-start border-3 border-primary ps-3">
+                            <span class="badge bg-primary mb-2">2025 - 2028</span>
+                            <h5 class="fw-bold mb-1">SMKN 8 Jember</h5>
+                            <p class="text-secondary mb-0">Jurusan Rekayasa Perangkat Lunak (RPL)</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Soft Skills -->
+                <div class="col-md-6">
+                    <div class="info-card">
+                        <div class="info-icon-box">
+                            <i class="fas fa-user-check"></i>
+                        </div>
+                        <h4 class="fw-bold mb-3">Soft Skills</h4>
+                        <div>
+                            <span class="soft-skill-badge"><i class="fas fa-puzzle-piece text-primary me-2"></i>Pemecahan Masalah (Problem Solving)</span>
+                            <span class="soft-skill-badge"><i class="fas fa-book-reader text-success me-2"></i>Kemauan Belajar (Eagerness to Learn)</span>
+                            <span class="soft-skill-badge"><i class="fas fa-comments text-info me-2"></i>Komunikasi (Communication)</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Keahlian Teknis (Hard Skills) -->
+    <section id="skills" class="py-5">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="section-title">Keahlian Teknis</h2>
+                <p class="section-desc">Tingkat penguasaan bahasa pemrograman dan teknologi web</p>
+            </div>
+            <div class="row g-4 justify-content-center">
+                <div class="col-md-10 col-lg-8">
+                    <div class="card p-4 border-0 shadow-sm rounded-4">
+                        <div class="row g-4">
+                            
+                            <!-- CSS: 90% -->
+                            <div class="col-md-6">
+                                <div class="d-flex justify-content-between mb-1">
+                                    <span class="skill-name"><i class="fab fa-css3-alt me-2 text-primary"></i>CSS & UI/UX</span>
+                                    <span class="skill-percent">90%</span>
+                                </div>
+                                <div class="progress">
+                                    <div class="progress-bar" role="progressbar" style="width: 90%;" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                            </div>
+
+                            <!-- HTML: 89% -->
+                            <div class="col-md-6">
+                                <div class="d-flex justify-content-between mb-1">
+                                    <span class="skill-name"><i class="fab fa-html5 me-2 text-danger"></i>HTML</span>
+                                    <span class="skill-percent">89%</span>
+                                </div>
+                                <div class="progress">
+                                    <div class="progress-bar" role="progressbar" style="width: 89%;" aria-valuenow="89" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                            </div>
+
+                            <!-- Java: 85% -->
+                            <div class="col-md-6">
+                                <div class="d-flex justify-content-between mb-1">
+                                    <span class="skill-name"><i class="fab fa-java me-2 text-warning"></i>Java</span>
+                                    <span class="skill-percent">85%</span>
+                                </div>
+                                <div class="progress">
+                                    <div class="progress-bar" role="progressbar" style="width: 85%;" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                            </div>
+
+                            <!-- Bootstrap: 78% -->
+                            <div class="col-md-6">
+                                <div class="d-flex justify-content-between mb-1">
+                                    <span class="skill-name"><i class="fab fa-bootstrap me-2" style="color: #6f42c1;"></i>Bootstrap</span>
+                                    <span class="skill-percent">78%</span>
+                                </div>
+                                <div class="progress">
+                                    <div class="progress-bar" role="progressbar" style="width: 78%;" aria-valuenow="78" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                            </div>
+
+                            <!-- PHP: 78% -->
+                            <div class="col-md-6">
+                                <div class="d-flex justify-content-between mb-1">
+                                    <span class="skill-name"><i class="fab fa-php me-2 text-info"></i>PHP</span>
+                                    <span class="skill-percent">78%</span>
+                                </div>
+                                <div class="progress">
+                                    <div class="progress-bar" role="progressbar" style="width: 78%;" aria-valuenow="78" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                            </div>
+
+                            <!-- JavaScript: 75% -->
+                            <div class="col-md-6">
+                                <div class="d-flex justify-content-between mb-1">
+                                    <span class="skill-name"><i class="fab fa-js me-2 text-warning"></i>JavaScript</span>
+                                    <span class="skill-percent">75%</span>
+                                </div>
+                                <div class="progress">
+                                    <div class="progress-bar" role="progressbar" style="width: 75%;" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Pengalaman Proyek Landing Page -->
+    <section id="projects" class="py-5" style="background-color: var(--bg-light);">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="section-title">Pengalaman Membuat Landing Page</h2>
+                <p class="section-desc">Hasil karya pembuatan web landing page modern & responsif</p>
+            </div>
+            <div class="row g-4 justify-content-center">
+
+                <!-- Proyek: Pentol Mercon Super Pedas -->
+                <div class="col-md-8">
+                    <div class="card card-custom h-100">
+                        <img src="projek saya.jpg.png" class="card-img-top" alt="Landing Page Pentol Mercon Super Pedas" style="height: 350px; object-fit: cover; object-position: top;">
+                        <div class="card-body d-flex flex-column justify-content-between p-4">
+                            <div>
+                                <div class="mb-3">
+                                    <span class="badge bg-primary">HTML5</span>
+                                    <span class="badge bg-primary">CSS3</span>
+                                    <span class="badge bg-primary">JavaScript</span>
+                                    <span class="badge bg-primary">Bootstrap</span>
+                                </div>
+                                <h4 class="card-title fw-bold text-dark">Landing Page Pentol Mercon Super Pedas</h4>[cite: 3]
+                                <p class="card-text text-secondary mt-2">
+                                    Membuat Project landing page interaktif dan eye-catching untuk produk kuliner "Pentol Mercon Super Pedas". Dilengkapi navigasi menu makanan/minuman, deskripsi produk menarik, serta tombol aksi cepat pemesanan via WhatsApp.
+                                </p>
+                            </div>
+                            <div class="mt-3 pt-3 border-top">
+                                <span class="badge bg-secondary">Project Ujikom Sekolah</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Sertifikat -->
+    <section id="certificates" class="py-5">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="section-title">Sertifikat & Lisensi Resmi</h2>
+                <p class="section-desc">Bukti fisik sertifikasi keahlian terverifikasi dari Getskill.id</p>
+            </div>
+            <div class="row g-4">
+                
+                <!-- Sertifikat 1: Bootstrap -->
+                <div class="col-md-6">
+                    <div class="card card-custom h-100">
+                        <div class="cert-img-container">
+                            <img src="boostrap.jpg.png" alt="Sertifikat Bootstrap" class="cert-img">
+                        </div>
+                        <div class="card-body d-flex flex-column justify-content-between p-4">
+                            <div>
+                                <div class="d-flex justify-content-between align-items-center mb-2">
+                                    <span class="cert-badge">Getskill.id</span>
+                                    <small class="text-muted"><i class="far fa-calendar-alt me-1"></i>Berlaku s.d. 16 Mei 2029</small>
+                                </div>
+                                <h5 class="card-title fw-bold text-dark mt-2">Pemrograman Front End Web dengan Bootstrap</h5>
+                                <p class="card-text text-secondary small mb-1">Penerima: <strong>Nabilah Fatmawati</strong></p>
+                                <p class="card-text text-secondary small">No. Sertifikat: <code>12202605160959</code></p>
+                            </div>
+                            <div class="mt-3 text-end border-top pt-3">
+                                <a href="https://getskill.id/certificate/12202605160959" target="_blank" class="btn btn-outline-primary btn-sm rounded-pill fw-bold">
+                                    <i class="fas fa-check-circle me-1"></i> Verifikasi Resmi
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sertifikat 2: Java -->
+                <div class="col-md-6">
+                    <div class="card card-custom h-100">
+                        <div class="cert-img-container">
+                            <img src="sertifikat 2.jpg.png" alt="Sertifikat Java" class="cert-img">
+                        </div>
+                        <div class="card-body d-flex flex-column justify-content-between p-4">
+                            <div>
+                                <div class="d-flex justify-content-between align-items-center mb-2">
+                                    <span class="cert-badge">Getskill.id</span>
+                                    <small class="text-muted"><i class="far fa-calendar-alt me-1"></i>Berlaku s.d. 24 Des 2028</small>
+                                </div>
+                                <h5 class="card-title fw-bold text-dark mt-2">Java Fundamental Programming</h5>
+                                <p class="card-text text-secondary small mb-1">Penerima: <strong>Nabilah Fatmawati</strong></p>
+                                <p class="card-text text-secondary small">No. Sertifikat: <code>12202512240382</code></p>
+                            </div>
+                            <div class="mt-3 text-end border-top pt-3">
+                                <a href="https://getskill.id/certificate/12202512240382" target="_blank" class="btn btn-outline-primary btn-sm rounded-pill fw-bold">
+                                    <i class="fas fa-check-circle me-1"></i> Verifikasi Resmi
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Kontak -->
+    <section id="contact" class="py-5" style="background-color: var(--bg-light);">
+        <div class="container text-center">
+            <h2 class="section-title mb-2">Mari Bekerja Sama</h2>
+            <p class="section-desc mb-5">Silakan hubungi saya melalui telepon, WhatsApp, atau email di bawah ini:</p>
+            
+            <div class="row g-4 justify-content-center">
+                <!-- Telepon / WhatsApp -->
+                <div class="col-md-5 col-lg-4">
+                    <div class="contact-card">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone-alt"></i>
+                        </div>
+                        <h5 class="fw-bold mb-1">Telepon / WhatsApp</h5>
+                        <p class="text-muted small mb-3">0852-3560-2680</p>
+                        <a href="https://wa.me/6285235602680" target="_blank" class="btn btn-outline-primary btn-sm rounded-pill px-3 fw-bold">
+                            <i class="fab fa-whatsapp me-1"></i> Chat WhatsApp
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Email -->
+                <div class="col-md-5 col-lg-4">
+                    <div class="contact-card">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <h5 class="fw-bold mb-1">Email</h5>
+                        <p class="text-muted small mb-3">nblhftmaa27@gmail.com</p>
+                        <a href="mailto:nblhftmaa27@gmail.com" class="btn btn-primary-custom btn-sm rounded-pill px-3 text-white">
+                            <i class="fas fa-paper-plane me-1"></i> Kirim Email
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-4 text-center">
+        <div class="container">
+            <p class="mb-0 small">&copy; 2026 Nabilah Fatmawati. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
